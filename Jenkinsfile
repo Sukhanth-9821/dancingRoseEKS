@@ -28,7 +28,8 @@ pipeline{
                     sh "aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 838676815759.dkr.ecr.ap-south-1.amazonaws.com"
                     sh 'sudo docker build -t dancingrose/kubernetes .'
                     sh 'sudo docker tag dancingrose/kubernetes:latest 838676815759.dkr.ecr.ap-south-1.amazonaws.com/dancingrose/kubernetes:${IMAGE_TAG}'
-                    sh "sudo docker push 838676815759.dkr.ecr.ap-south-1.amazonaws.com/dancingrose/kubernetes:latest"
+                    sh 'sudo docker images'
+                    sh "sudo docker push 838676815759.dkr.ecr.ap-south-1.amazonaws.com/dancingrose/kubernetes:${IMAGE_TAG}"
                         }
                 }
             }
