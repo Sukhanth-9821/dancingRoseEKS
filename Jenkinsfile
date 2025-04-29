@@ -29,7 +29,8 @@ pipeline{
                     sh 'sudo docker build -t dancingrose/kubernetes .'
                     sh 'sudo docker tag dancingrose/kubernetes:latest 838676815759.dkr.ecr.ap-south-1.amazonaws.com/dancingrose/kubernetes:${IMAGE_TAG}'
                     sh 'sudo docker images'
-                    sh "sudo docker push 838676815759.dkr.ecr.ap-south-1.amazonaws.com/dancingrose/kubernetes:${IMAGE_TAG}"
+                    sh "sudo su -"
+                    sh "docker push 838676815759.dkr.ecr.ap-south-1.amazonaws.com/dancingrose/kubernetes:${IMAGE_TAG}"
                         }
                 }
             }
