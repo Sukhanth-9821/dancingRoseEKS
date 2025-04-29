@@ -29,11 +29,11 @@ pipeline{
                     sh 'sudo docker build -t dancingrose/kubernetes .'
                     sh 'sudo docker tag dancingrose/kubernetes:latest 838676815759.dkr.ecr.ap-south-1.amazonaws.com/dancingrose/kubernetes:${IMAGE_TAG}'
                     sh 'sudo docker images'
-                    sh "aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID"
-                    sh "aws configure set aws_secret_access_key  $AWS_SECRET_ACCESS_KEY"
-                    sh "aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 838676815759.dkr.ecr.ap-south-1.amazonaws.com"
+                    sh "sudo aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID"
+                    sh "sudo aws configure set aws_secret_access_key  $AWS_SECRET_ACCESS_KEY"
+                    sh "sudo aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 838676815759.dkr.ecr.ap-south-1.amazonaws.com"
                     sh "sudo docker push 838676815759.dkr.ecr.ap-south-1.amazonaws.com/dancingrose/kubernetes:${IMAGE_TAG}"
-                        }
+                    }
                 }
             }
         }
