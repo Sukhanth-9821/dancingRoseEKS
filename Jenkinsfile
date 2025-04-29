@@ -21,8 +21,9 @@ pipeline{
         stage("docker image build"){
             steps{
                 script{
-                    sh 'export AWS_ACCESS_KEY_ID=AKIA4GRIIT6HYRUNHHN2'
-                    sh 'export AWS_SECRET_ACCESS_KEY=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'
+                    withCredentials([usernamePassword(credentialsId: 'aws-creds',usernameVariable:"AWS_ACCESS_KEY_ID",passwordVariable:"AWS_SECRET_ACCESS_KEY" )])
+                    sh "aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID"
+                    sh "aws configure set aws_secret_access_key  $AWS_SECRET_ACCESS_KEY"
                     sh "aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 838676815759.dkr.ecr.ap-south-1.amazonaws.com"
                     sh 'docker build -t dancingrose/kubernetes .'
                     sh 'docker tag dancingrose/kubernetes:latest 838676815759.dkr.ecr.ap-south-1.amazonaws.com/dancingrose/kubernetes:${IMAGE_TAG}'
