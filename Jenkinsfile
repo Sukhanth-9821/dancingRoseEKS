@@ -4,7 +4,7 @@ pipeline{
         AWS_ACCOUNT_ID="838676815759"
         AWS_DEFAULT_REGION="ap-south-1"
         IMAGE_REPO_NAME="qwer"
-        IMAGE_TAG="Latest"
+        IMAGE_TAG="2"
         REPOSITORY_URI="qewrr"
 
     }
